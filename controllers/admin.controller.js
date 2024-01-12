@@ -19,6 +19,11 @@ const loginAdmin =async(req ,res)=>{
                 return res.status(400).json({error:'Not such email existing'})
             }
             else{
+                if(admin.token){
+                    console.log("a user is alreay loged in")
+                    return res.status(200).json({error:'User already login'})
+                }
+                
                 if(admin.password == password){
                     let token =  await jwt.sign({id:admin._id ,email:admin.email} ,process.env.JWT_SECRET_KEY)
 
@@ -82,6 +87,28 @@ const registerAdmin=async(req ,res)=>{
     }
 }
 
+// Function to disconnect an administrator from its current session
+const logoutAdmin=async(req ,res)=>{
+    try{
+        let {id} = req.body
+        const admin = adminModel.findById({_id:id})
+        .then(async (respond) => {
+            respond.token = ''
+            await respond.save()
+            return res.status(200).json({message:'logout successful'})
+        })
+        .catch(e => {
+            console.log(e)
+            return res.status(500).json({error:'Prblem encoutered while loging out'})
+        })
+
+    }
+    catch(e){
+        console.log(e)
+        return res.status(500).json({error:'Server error'})
+    }
+}
+
 
 // Function to get all the users informations
 const getUserInfo=async(req ,res)=>{
@@ -101,4 +128,4 @@ const getUserInfo=async(req ,res)=>{
     }
 }
 
-module.exports = {getUserInfo ,registerAdmin ,loginAdmin}
+module.exports = {getUserInfo ,registerAdmin ,loginAdmin ,logoutAdmin}

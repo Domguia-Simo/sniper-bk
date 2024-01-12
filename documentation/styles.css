@@ -1,0 +1,39 @@
+body{
+    padding:0;
+    margin:0;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+h2{
+    color:blue;
+    text-align: center;
+    /* border:solid 1px grey */
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    border-bottom:solid 1px grey;
+    margin-top:5px;
+    margin-bottom: 5px;
+    padding:10px;
+}
+
+span:first-child{
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: larger;
+}
+span:last-child{
+    padding-left:20px;
+}
+
+pre{
+    border:solid 1px grey;
+    width:fit-content;
+    padding-top:10px;
+    padding-right: 10px;
+    background-color: rgba(50,50,50,1);
+    color:white
+}

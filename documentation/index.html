@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sniper Business Center</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+    <h2>Sniper backend documentation</h2>
+    <div>
+        <span>
+         GET &nbsp;&nbsp;&nbsp; /
+        </span>
+        <span>
+            Begining of the sniper business center backend
+        </span>
+    </div>
+
+    <div>
+        <span>
+         GET  &nbsp;&nbsp;&nbsp;/api/documentation
+        </span>
+        <span>
+            Simple web page to view the various api and their usage
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/user/save-user
+        </span>
+        <span>
+            To save or register a particular user.<br/>
+    <pre>
+    body:{
+        name:'...',
+        surName:'...',
+        phone:'...',
+        region:'...',
+        email:'...'
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/admin/login-admin
+        </span>
+        <span>
+            For an administrator to login into his account.<br/>
+    <pre>
+    body:{
+        password:'...',
+        email:'...'
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/admin/register-admin
+        </span>
+        <span>
+           To create an administrator account.<br/>
+    <pre>
+    body:{
+        name:'...',
+        surName:'...',
+        email:'...'
+        password:'...',
+        confirm:'...',
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/admin/logout-admin
+        </span>
+        <span>
+           Disconnect an administrator session.<br/>
+    <pre>
+    headers:{
+        authorization:'Bearer ${token}'
+    }
+    
+    body:{
+        id:'...'
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         GET &nbsp;&nbsp;&nbsp; /api/admin/get-user-info
+        </span>
+        <span>
+           Get all the users personal informations.<br/>
+    <pre>
+    headers:{
+        authorization:'Bearer ${token}'
+    }
+    </pre>
+        </span>
+    </div>
+    
+</body>
+</html>

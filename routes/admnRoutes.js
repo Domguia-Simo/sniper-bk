@@ -5,10 +5,12 @@ const router = express.Router()
 const {verifyAuths} = require('../middlewares/verify.authorisation.js')
 
 // Controllers
-const {getUserInfo, registerAdmin, loginAdmin} = require('../controllers/admin.controller.js')
+const {getUserInfo, registerAdmin, loginAdmin,
+        logoutAdmin} = require('../controllers/admin.controller.js')
 
 router.route('/login-admin').post(loginAdmin)
 router.route('/register-admin').post(registerAdmin)
+router.route('/logout-admin').post(verifyAuths ,logoutAdmin)
 
 router.route('/grant-access').post(()=>{})
 

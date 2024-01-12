@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
@@ -22,6 +23,9 @@ mongoose.connect(url)
 // Routes
 const userRoutes = require('./routes/userRoutes.js')
 const adminRoutes = require('./routes/admnRoutes.js')
+
+// Serving staic files
+app.use('/documentation',express.static(path.join(__dirname ,'documentation') )) //documentation
 
 app.get('/',(req ,res)=>{
     res.send("Welcome to snipper business center backend")
