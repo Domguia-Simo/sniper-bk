@@ -1,8 +1,7 @@
 const userModel = require('../models/userModel')
 const adminModel = require('../models/adminModel')
 const jwt = require('jsonwebtoken')
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require('dotenv').config()
 
 // Funtions to login an administrator
 const loginAdmin =async(req ,res)=>{
@@ -14,14 +13,18 @@ const loginAdmin =async(req ,res)=>{
         }
         console.log(req.body)
 
-        const admin = await userModel.findOne({email:email})
+        const admin = await adminModel.findOne({email:email})
         console.log(admin )
             if(admin == null){
                 return res.status(400).json({error:'Not such email existing'})
             }
             else{
                 if(admin.password == password){
-                    let token =  await jwt.sign({id:admin._id ,email:admin.email} ,JWT_SECRET_KEY)
+                    let token =  await jwt.sign({id:admin._id ,email:admin.email} ,process.env.JWT_SECRET_KEY)
+
+                    admin.token = token;
+                    admin.save()
+
                     return res.status(200).json({message:'User connected successfully' ,token:token})
                 }
                 else{

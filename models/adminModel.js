@@ -7,7 +7,8 @@ const admin = new Schema({
     email:{type:String ,require:true},
     password:{type:String ,require:true},
     permissions:{type:String},
-    accountType:{type:String ,default:'admin'}
+    accountType:{type:String ,default:'admin'},
+    token:{type:String}
 })
 
 const adminModel = mongoose.model('admin' ,admin)
