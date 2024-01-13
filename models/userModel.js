@@ -6,7 +6,9 @@ const user = new Schema({
     surName:{type:String ,require:true},
     region:{type:String ,require:true},
     phoneNumber:{type:Number ,require:true},
-    email:{type:String ,require:true}
+    email:{type:String ,require:true},
+    password:{type:String ,require:true},
+    token:{type:String}
 })
 
 const userModel = mongoose.model('user' ,user)

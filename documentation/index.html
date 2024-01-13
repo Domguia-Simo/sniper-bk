@@ -29,7 +29,7 @@
 
     <div>
         <span>
-         POST &nbsp;&nbsp;&nbsp; /api/user/save-user
+         POST &nbsp;&nbsp;&nbsp; /api/user/register
         </span>
         <span>
             To save or register a particular user.<br/>
@@ -39,7 +39,38 @@
         surName:'...',
         phone:'...',
         region:'...',
-        email:'...'
+        email:'...',
+        password:'...',
+        confirm:'...'
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/user/logout
+        </span>
+        <span>
+            To dsconnect a user from his/her session.<br/>
+    <pre>
+    body:{
+        id:'...'
+    }
+    </pre>
+        </span>
+    </div>
+
+    <div>
+        <span>
+         POST &nbsp;&nbsp;&nbsp; /api/user/login
+        </span>
+        <span>
+            To login a user into the system.<br/>
+    <pre>
+    body:{
+        email:'...',
+        password:'...'
     }
     </pre>
         </span>
