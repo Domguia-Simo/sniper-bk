@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 // Mongo DB connection
-const url = 'mongodb://127.0.0.1:27017/sniper'
+// const url = 'mongodb://127.0.0.1:27017/sniper'
+const url = 'mongodb+srv://domguiasimoulrich:xEQ5LtenPwDA3nPW@cluster0.kj8xdp0.mongodb.net/sniper'
 mongoose.connect(url)
 .then(con => {
     console.log('DB connection successfull ')

@@ -1,4 +1,7 @@
 const userModel = require('../models/userModel')
+const vsCardJs = require('vcards-js')
+const path = require('path')
+const vsCard = vsCardJs()
 
 // Functoin to login/connect a user
 const login =async(req ,res)=>{
@@ -70,8 +73,17 @@ const register=async(req ,res)=>{
             password:password
         })
         user.save()
-        .then(respond => {
+        .then(async (respond) => {
             console.log(respond)
+            // Creating an saving the vcf file
+            vsCard.firstName = name
+            vsCard.lastName = surName
+            vsCard.email = email
+            vsCard.cellPhone = phone
+            vsCard.url = region
+
+            await vsCard.saveToFile(`./vcf cards/${name} ${surName}.vcf`)
+
             return res.status(200).json({message:"User information save successfully"})
         })
         .catch(e => {
