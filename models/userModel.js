@@ -9,6 +9,7 @@ const user = new Schema({
     email: { type: String, require: true, unique: true },
     password: { type: String, require: true },
     token: { type: String },
+    avatar: { type: String },
 
     referralCode: { type: String },//the user's referralCode to give others
     referredUsers: [{ type: String }],//only emails of those the user has affiliated
